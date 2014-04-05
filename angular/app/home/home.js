@@ -10,7 +10,11 @@ angular.module('freshquest2')
 })
 
 .controller('Home', function ($scope, Vendor) {
-    $scope.vendors = Vendor.query();
+    $scope.vendors = Vendor.query(function (vendors) {
+    	$scope.items = _(vendors).map(function (item) {
+    		return item.name;
+    	});
+    });
 })
 
 ;
