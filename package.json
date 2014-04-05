@@ -1,0 +1,6 @@
+{
+    "name" : "bodyhub",
+    "dependencies": {
+        "bower": "1.3.1"
+    }
+}
