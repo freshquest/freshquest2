@@ -1,6 +1,6 @@
 angular.module('freshquest2')
 
-.factory('Vendor', function ($reource) {
+.factory('Vendor', function ($resource) {
     return $resource('/api/vendor/:id', { id: '@id' });
 })
 

@@ -1,12 +1,8 @@
-<div class="container">
-    <div class="page-header">
-        <h1>The Farmers Market</h1>
-    </div>
-    <div class="map">
-        <div id="shed_a" class="shed">A</div>
-        <div id="shed_b" class="shed">B</div>
-        <div id="shed_c" class="shed">C</div>
-        <div id="shed_d" class="shed">D</div>
-        <div id="shed_e" class="shed">E</div>
-    </div><!--end of .map-->
-</div><!-- end of .container -->
+Maybe you want <a href="#slotting">slotting</a>.
+
+<h3>Here are all the vendors</h3>
+<ul>
+    <li ng-repeat="vendor in vendors">
+        {{ vendor.name }}
+    </li>
+</ul>
