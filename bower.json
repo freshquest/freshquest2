@@ -11,6 +11,7 @@
     "dependencies": {
         "angular": "1.2.16",
         "angular-resource": "1.2.16",
+        "angular-ui-router": "0.2.10",
         "jquery": "1.11.0",
         "underscore": "1.5.2"
     }
