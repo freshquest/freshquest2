@@ -19,7 +19,7 @@
             <div class="slots right">
                 <div class="slot"
                     ng-repeat="slot in slots_right_top"
-                    ng-class=" { leased: slot.assignment }"
+                    ng-class=" { leased: slot.assignment, occupied: slot.assignment.is_checked_in }"
                     edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
                 </div>  
             </div> <!-- end .top-right -->
@@ -27,7 +27,7 @@
             <div class="slots left">
                 <div class="slot"
                     ng-repeat="slot in slots_left_top"
-                    ng-class=" { leased: slot.assignment }"
+                    ng-class=" { leased: slot.assignment, occupied: slot.assignment.is_checked_in }"
                     edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
                 </div>
             </div><!-- end .top-left -->
@@ -41,7 +41,7 @@
             <div class="slots right">
                 <div class="slot"
                     ng-repeat="slot in slots_right_bottom"
-                    ng-class=" { leased: slot.assignment }"
+                    ng-class=" { leased: slot.assignment, occupied: slot.assignment.is_checked_in }"
                     edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
                 </div>  
             </div> <!-- end .bottom-right -->

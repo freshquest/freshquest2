@@ -90,6 +90,10 @@ hr {
 .ng-binding, .text-box {
   display: inline-block;
 }
+.ui-autocomplete-input {
+  display: inline-block;
+  width: 80%;
+}
 .leased {
   background: #666!important;
   color: #e3e3e3;

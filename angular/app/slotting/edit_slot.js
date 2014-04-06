@@ -20,7 +20,7 @@ angular.module('freshquest2')
                 '<a ng-click="set_checked_in(true)"><span class="fa fa-check"></span> </a> ' +
             '</div>' +
             '<div ng-show="slot.assignment && !isEditing && slot.assignment.is_checked_in" class="entry_edit"> ' +
-                '<a ng-click="set_checked_in(false)"><span class="fa fa-check"></span> </a> ' +
+                '<a ng-click="set_checked_in(false)"><span class="fa fa-pencil"></span> </a> ' +
             '</div>' +
         '</div>';
 
