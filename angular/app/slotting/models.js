@@ -5,10 +5,14 @@ angular.module('freshquest2')
 })
 
 .service('MarketDay', function ($resource) {
-	var MarketDay = $resource('/api/market_day', { id: '@id' });
+	var MarketDay = $resource('/api/market_day');
 	return {
 		current: MarketDay.get(),
 	};
+})
+
+.factory('Assignment', function ($resource) {
+    return $resource('/api/assignment/:id', { id: '@id' });
 })
 
 ;

@@ -1,6 +1,8 @@
 from rest_framework import mixins, viewsets
 from slotting.serializers import VendorSerializer
 from slotting.serializers import MarketDaySerializer
+from slotting.serializers import AssignmentSerializer
+from slotting.models import Assignment
 from slotting.models import MarketDay
 from slotting.models import Vendor
 
@@ -26,3 +28,13 @@ class MarketDayView(mixins.RetrieveModelMixin,
         '''
         return self.model.objects.first()
 
+
+class AssignmentViewSet(mixins.RetrieveModelMixin,
+                    mixins.ListModelMixin,
+                    mixins.CreateModelMixin,
+                    mixins.DestroyModelMixin,
+                    viewsets.GenericViewSet):
+    lookup_field = 'assignment_id'
+    lookup_field_regex = '[0-9a-f]{32}'
+    model = Assignment
+    serializer_class = AssignmentSerializer

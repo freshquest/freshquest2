@@ -18,6 +18,7 @@ class MarketDay(models.Model):
     date = models.DateField()
 
 class Stall(models.Model):
+    stall_id = uuidfield.UUIDField(auto=True, unique=True, editable=False)
     building = models.CharField(max_length=8, choices=map(lambda x: (x, x), BUILDINGS))
     section = models.CharField(max_length=8, choices=map(lambda x: (x, x), SECTION))
     stall_number = models.PositiveSmallIntegerField()
@@ -29,6 +30,7 @@ class Stall(models.Model):
         return self.building + ' ' + self.section + ' ' + unicode(self.stall_number)
 
 class Assignment(models.Model):
+    assignment_id = uuidfield.UUIDField(auto=True, unique=True, editable=False)
     market_day = models.ForeignKey('slotting.MarketDay')
     stall = models.ForeignKey('slotting.Stall')
     vendor = models.ForeignKey('slotting.Vendor')
