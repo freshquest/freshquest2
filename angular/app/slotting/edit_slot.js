@@ -1,4 +1,4 @@
-angular.module('clickToEdit', [])
+angular.module('freshquest2')
 
 .directive('clickToEdit', function() {
     var template =
@@ -43,7 +43,9 @@ angular.module('clickToEdit', [])
             };
 
             $scope.save = function() {
-                $scope.value = $scope.view.editableValue;
+                console.log("Saving with value: ");
+                console.log($scope.view.editableValue);
+                // $scope.value = $scope.view.editableValue;
                 $scope.disableEditor();
             };
         },

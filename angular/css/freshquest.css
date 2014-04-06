@@ -32,35 +32,40 @@ hr {
   width: 100%;
   background: #cccccc;
 }
-.slots {
-  background: #666;
+.slots , .available {
+  background: #3c6;
+  border: thick #ccc;
 }
-.top-left {
-  position:relative;
-  bottom:0px;
-  left:0px;
+.top
+
+.left {
   width: 45%;
 }
-.top-right {
-  position:relative;
+.right {
   float: right;
-  bottom:0px;
-  right:0px;
   width: 45%;
 }
-.bottom-left {
+.bottom .left {
   position:relative;
   bottom:0px;
   left:0px;
   width: 45%;
 }
-.bottom-right {
+.bottom .right {
   position:relative;
   float:right;
   bottom:0px;
   right:0px;
   width: 45%;
 }
+.walkway {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
 .leased {
-  background: #3c6;
+  background: #666;
+}
+.occupied {
+  background: #000;
 }
