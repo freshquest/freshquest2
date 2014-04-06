@@ -1,7 +1,7 @@
 /* Font Awesome Icons
 ---------------------------------------- */
 /*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
-@import url(http://varietystudios.net/resources/font-awesome-4.0.3/css/font-awesome.min.css);
+@import url(http://varietystudios.net/resources/font-awesome-4.0.3/css/font-awesome.css);
 
 
 .container {
@@ -17,6 +17,9 @@ h1 {
   font-weight: 800;
   font-size: 50px;
   color: #3c6;
+}
+.v-hack {
+  letter-spacing: -4px;
 }
 .row {
   margin-bottom: 20px;
@@ -56,6 +59,24 @@ hr {
 }
 .edit-slot a
 {z-index: 2!important;}
+.entry-edit {
+  float: right;
+}
+.entry-edit a 
+{color: #fff;}
+.entry-edit .fa-ban a:hover 
+{color: #f00;}
+.entry-edit .fa-save a:hover 
+{color: #3c6;}
+.save
+.cancel {}
+.stall_number {
+  display: inline-block;
+  margin-right: 10px;
+}
+.ng-binding, .text-box {
+  display: inline-block;
+}
 .leased {
   background: #666!important;
   color: #e3e3e3;
@@ -64,7 +85,6 @@ hr {
   background: #000!important;
   color: #e3e3e3;
 }
-.top {;}
 
 .left {
   width: 45%;
@@ -88,8 +108,13 @@ hr {
 }
 .walkway {
   text-align: center;
-  padding: 20px;
+  padding: 5px;
   width: 100%;
+  font-family:Raleway,Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  letter-spacing: 5px;
+  color: #fff;
+  font-size: 30px;
 }
 .slot_availability {
   text-align: right;

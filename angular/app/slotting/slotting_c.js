@@ -9,7 +9,12 @@ angular.module('freshquest2')
 })
 
 .controller('Slotting-C-Page', function ($scope, Vendor, MarketDay, Stall, Assignment) {
-    $scope.vendors = Vendor.query();
+    $scope.vendors = Vendor.query(function (vendors) {
+        $scope.vendor_names = _($scope.vendors).map(function (item) {
+            return item.name;
+        });
+    });
+
     $scope.market_day = MarketDay.current;
 
     // Return stalls in the range min -> max

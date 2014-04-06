@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="page-header">
-        <h1>Vendor Slots</h1>
+        <h1><span class="v-hack">V</span>endor Slots</h1>
 
     <div class="icons">
         <div class="shed_a"></div><!-- end .shed_a -->
@@ -15,45 +15,52 @@
     </div><!-- .page-header --> 
 
     <div class="map">
-        <div id="shed_c" class="shed slotting_c">C</div>
-
         <div class="top group">
-	        <div class="slots right">
-	        	<div class="slot" ng-repeat="slot in slots_right_top">
-                    {{ slot.stall_number }}
+            <div class="slots right">
+                <div class="slot"
+                    ng-repeat="slot in slots_right_top"
+                    ng-class=" { leased: slot.assignment }"
+                    edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
                 </div>  
-	        </div> <!-- end .top-right -->
+            </div> <!-- end .top-right -->
 
-	        <div class="slots left">
-	        	<div class="slot" ng-repeat="slot in slots_left_top">
-                    {{ slot.stall_number }}
+            <div class="slots left">
+                <div class="slot"
+                    ng-repeat="slot in slots_left_top"
+                    ng-class=" { leased: slot.assignment }"
+                    edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
+                </div>
+            </div><!-- end .top-left -->
+
+           
+        </div><!-- end .top -->
+
+        <div class="walkway"> SHED C </div> <!-- end .walkway -->
+
+        <div class="bottom group">
+            <div class="slots right">
+                <div class="slot"
+                    ng-repeat="slot in slots_right_bottom"
+                    ng-class=" { leased: slot.assignment }"
+                    edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
                 </div>  
-	        </div><!-- end .top-left -->
+            </div> <!-- end .bottom-right -->
 
-	       
-    	</div><!-- end .top -->
-
-    	<div class="walkway"> SHED "C" </div> <!-- end .walkway -->
-
-    	<div class="bottom group">
-    		<div class="slots right">
-	        	<div class="slot" ng-repeat="slot in slots_right_bottom">
-                    {{ slot.stall_number }}
+            <div class="slots left">
+                <div class="slot"
+                    ng-repeat="slot in slots_left_bottom"
+                    ng-class=" { leased: slot.assignment }"
+                    edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
                 </div>  
-	        </div> <!-- end .bottom-right -->
+            </div> <!-- end .bottom-left -->
 
-	        <div class="slots left">
-	        	<div class="slot" ng-repeat="slot in slots_left_bottom" ng-class=" { leased: slot.assignment }" edit-slot="slot">
-                </div>  
-	        </div> <!-- end .bottom-left -->
-
-	    </div><!-- end .bottom -->
+        </div><!-- end .bottom -->
     </div><!--end of .map-->
 
     <div class="slot_availability">
-		<span class="summary available">Available Slots /</span> 
-		<span class="summary leased">Leased Slots /</span> 
-		<span class="summary occupied">Occupied Slots</span> 
+        <span class="summary available">Available Slots /</span> 
+        <span class="summary leased">Leased Slots /</span> 
+        <span class="summary occupied">Occupied Slots</span> 
     </div><!-- end .slot_availability -->
 </div><!-- end of .container -->
 
