@@ -3,6 +3,7 @@ from slotting.models import Vendor
 from slotting.models import MarketDay
 from slotting.models import Stall
 from profiles.models import VendorProfile
+from slotting.models import Assignment
 
 class VendorProfileInline(admin.StackedInline):
     model = VendorProfile
@@ -19,3 +20,4 @@ class StallAdmin(admin.ModelAdmin):
 admin.site.register(Vendor, VendorAdmin)
 admin.site.register(MarketDay)
 admin.site.register(Stall, StallAdmin)
+admin.site.register(Assignment)

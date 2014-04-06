@@ -26,3 +26,41 @@ hr {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+/* MAPS FOR SHED SLOTTING */
+.map {
+  width: 100%;
+  background: #cccccc;
+}
+.slots {
+  background: #666;
+}
+.top-left {
+  position:relative;
+  bottom:0px;
+  left:0px;
+  width: 45%;
+}
+.top-right {
+  position:relative;
+  float: right;
+  bottom:0px;
+  right:0px;
+  width: 45%;
+}
+.bottom-left {
+  position:relative;
+  bottom:0px;
+  left:0px;
+  width: 45%;
+}
+.bottom-right {
+  position:relative;
+  float:right;
+  bottom:0px;
+  right:0px;
+  width: 45%;
+}
+.leased {
+  background: #3c6;
+}

@@ -28,18 +28,43 @@ angular.module('freshquest2')
         return _(stalls).filter(filter);
     }
 
-    Stall.query(function (stalls) {
-        stalls = _(stalls).where({'building': 'c_shed'});
-        stalls = _(stalls).sortBy(function (item) { return item.stall_number; });
-        stalls = _(stalls).reverse();
+    var add_assignments_to_stalls = function (stalls, assignment, vendors) {
+        var stalls_map = {};
+        _(stalls).each(function (item) {
+            stalls_map[item.stall_id] = item;
+        });
+        var vendors_map = {};
+        _(vendors).each(function (item) {
+            vendors_map[item.vendor_id] = item;
+        });
 
-        $scope.left_top = filter_stalls(stalls, 33, 62, 'even');
-        $scope.right_top = filter_stalls(stalls, 33, 62, 'odd');
-        $scope.left_bottom = filter_stalls(stalls, 1, 32, 'even');
-        $scope.right_bottom = filter_stalls(stalls, 1, 32, 'odd');
+        _(assignment).each(function (item) {
+            var stall = stalls_map[item.stall_id];
+            if (stall) {
+                item.vendor = vendors_map[item.vendor_id];
+                stall.assignment = item;
+            }
+        });
+    }
 
-        console.log($scope.right_bottom);
+    Vendor.query(function (vendors) {
+        Assignment.query(function (assignments) {
+            Stall.query(function (stalls) {
+
+                stalls = _(stalls).where({'building': 'c_shed'});
+                stalls = _(stalls).sortBy(function (item) { return item.stall_number; });
+                stalls = _(stalls).reverse();
+
+                add_assignments_to_stalls(stalls, assignments, vendors);
+
+                $scope.slots_left_top = filter_stalls(stalls, 33, 62, 'even');
+                $scope.slots_right_top = filter_stalls(stalls, 33, 62, 'odd');
+                $scope.slots_left_bottom = filter_stalls(stalls, 1, 32, 'even');
+                $scope.slots_right_bottom = filter_stalls(stalls, 1, 32, 'odd');
+            });
+        });
     });
+
 
 })
 

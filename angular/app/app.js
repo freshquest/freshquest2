@@ -1,7 +1,8 @@
 angular.module('freshquest2', [
 	'ngResource',
-	'autoComplete',
 	'ui.router',
+	'autoComplete',
+	'clickToEdit',
 ])
 
 .config(function ($httpProvider) {

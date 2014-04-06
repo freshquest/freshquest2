@@ -16,12 +16,25 @@
 
     <div class="map">
         <div id="shed_c" class="shed slotting_c">C</div>
+        <div class="slots top left">
+        	<div ng-repeat="slot in slots_left_top"> {{ slot.stall_number }} </div>  
+        </div><!-- end .top-left -->
+        <div class="slots top right">
+        	<div ng-repeat="slot in slots_right_top"> {{ slot.stall_number }} </div>  
+        </div> <!-- end .top-right -->
+        <div class="slots bottom left">
+        	<div ng-repeat="slot in slots_left_bottom" ng-class=" { leased: slot.assignment }"> 
+        		{{ slot.stall_number }} {{ slot.assignment.vendor.name }} </div>  
+        </div> <!-- end .bottom-left -->
+        <div class="slots bottom right">
+        	<div ng-repeat="slot in slots_right_bottom"> {{ slot.stall_number }} </div>  
+        </div> <!-- end .bottom-right -->
     </div><!--end of .map-->
 
     <div class="slot_availability">
-		<span class="slots available">Available Slots /</span> 
-		<span class="slots leased">Leased Slots /</span> 
-		<span class="slots occupied">Occupied Slots</span> 
+		<span class="summary available">Available Slots /</span> 
+		<span class="summary leased">Leased Slots /</span> 
+		<span class="summary occupied">Occupied Slots</span> 
     </div><!-- end .slot_availability -->
 </div><!-- end of .container -->
 
