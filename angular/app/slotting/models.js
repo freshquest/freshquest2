@@ -11,6 +11,10 @@ angular.module('freshquest2')
 	};
 })
 
+.factory('Stall', function ($resource) {
+    return $resource('/api/stall/:id', { id: '@id' });
+})
+
 .factory('Assignment', function ($resource) {
     return $resource('/api/assignment/:id', { id: '@id' });
 })

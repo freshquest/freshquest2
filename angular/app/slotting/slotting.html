@@ -1,3 +1,4 @@
+<div ng-include="'/static/app/page_components/header.html'"></div>
 
 <div class="container">
     <div class="page-header">
@@ -13,3 +14,7 @@
 </div><!-- end of .container -->
 
 Current market day: {{ market_day.date | date:'MMMM d' }}
+
+<a ng-click="run_test()">try it</a>
+
+<div ng-include="'/static/app/page_components/footer.html'"></div>

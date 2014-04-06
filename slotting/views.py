@@ -2,8 +2,10 @@ from rest_framework import mixins, viewsets
 from slotting.serializers import VendorSerializer
 from slotting.serializers import MarketDaySerializer
 from slotting.serializers import AssignmentSerializer
+from slotting.serializers import StallSerializer
 from slotting.models import Assignment
 from slotting.models import MarketDay
+from slotting.models import Stall
 from slotting.models import Vendor
 
 
@@ -27,6 +29,14 @@ class MarketDayView(mixins.RetrieveModelMixin,
         when the object does not exist.
         '''
         return self.model.objects.first()
+
+
+class StallViewSet(mixins.ListModelMixin,
+                    viewsets.GenericViewSet):
+    lookup_field = 'assignment_id'
+    lookup_field_regex = '[0-9a-f]{32}'
+    model = Stall
+    serializer_class = StallSerializer
 
 
 class AssignmentViewSet(mixins.RetrieveModelMixin,

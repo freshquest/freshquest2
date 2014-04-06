@@ -11,5 +11,8 @@ class Category(models.Model):
     category_id = uuidfield.UUIDField(auto=True, unique=True, editable=False)
     name = models.CharField(max_length=60)
 
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         verbose_name_plural = 'Categories'

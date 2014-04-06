@@ -3,6 +3,7 @@ from project.serializers import CoercibleSlugRelatedField
 from .models import MarketDay
 from .models import Vendor
 from .models import Assignment
+from .models import Stall
 
 
 class VendorSerializer(serializers.ModelSerializer):
@@ -13,6 +14,11 @@ class VendorSerializer(serializers.ModelSerializer):
 class MarketDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = MarketDay
+
+
+class StallSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Stall
 
 
 class AssignmentSerializer(serializers.ModelSerializer):

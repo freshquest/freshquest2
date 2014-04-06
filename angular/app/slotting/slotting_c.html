@@ -1,0 +1,32 @@
+<div ng-include="'/static/app/page_components/header.html'"></div>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Vendor Slots</h1>
+
+    <div class="icons">
+        <div class="shed_a"></div><!-- end .shed_a -->
+        <div class="shed_b"></div><!-- end .shed_b -->
+        <div class="shed_c_active"></div><!-- end .currentshed -->
+        <div class="shed_d"></div><!-- end .shed_d -->
+        <div class="shed_e"></div><!-- end .shed_e -->
+        <div class="shed_f"></div><!-- end .shed_f -->
+    </div><!-- end .icons-->
+    </div><!-- .page-header --> 
+
+    <div class="map">
+        <div id="shed_c" class="shed slotting_c">C</div>
+    </div><!--end of .map-->
+
+    <div class="slot_availability">
+		<span class="slots available">Available Slots /</span> 
+		<span class="slots leased">Leased Slots /</span> 
+		<span class="slots occupied">Occupied Slots</span> 
+    </div><!-- end .slot_availability -->
+</div><!-- end of .container -->
+
+Current market day: {{ market_day.date | date:'MMMM d' }}
+
+<a ng-click="run_test()">try it</a>
+
+<div ng-include="'/static/app/page_components/footer.html'"></div>
