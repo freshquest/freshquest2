@@ -34,6 +34,7 @@ class Assignment(models.Model):
     market_day = models.ForeignKey('slotting.MarketDay')
     stall = models.ForeignKey('slotting.Stall')
     vendor = models.ForeignKey('slotting.Vendor')
+    is_checked_in = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('market_day', 'stall', 'vendor')

@@ -69,13 +69,17 @@ hr {
 .entry_edit a .fa {
   padding: 5px;
   border-radius: 2px;
-
+  float: right;
 }
 .entry_edit a .fa-ban:hover 
 {background-color: #ff0000;
+
 }
 .entry_edit a .fa-save:hover 
 {background-color: #006633;
+}
+.entry_edit a .fa-check:hover 
+{background-color: #cccccc;
 }
 .save
 .cancel {}

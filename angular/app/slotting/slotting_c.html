@@ -49,7 +49,7 @@
             <div class="slots left">
                 <div class="slot"
                     ng-repeat="slot in slots_left_bottom"
-                    ng-class=" { leased: slot.assignment }"
+                    ng-class=" { leased: slot.assignment, occupied: slot.assignment.is_checked_in }"
                     edit-slot="slot" vendors="vendors" vendor-names="vendor_names">
                 </div>  
             </div> <!-- end .bottom-left -->
@@ -65,7 +65,5 @@
 </div><!-- end of .container -->
 
 Current market day: {{ market_day.date | date:'MMMM d' }}
-
-<a ng-click="run_test()">try it</a>
 
 <div ng-include="'/static/app/page_components/footer.html'"></div>

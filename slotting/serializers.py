@@ -28,4 +28,4 @@ class AssignmentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Assignment
-        fields = ['assignment_id', 'market_day_id', 'stall_id', 'vendor_id']
+        fields = ['assignment_id', 'market_day_id', 'stall_id', 'vendor_id', 'is_checked_in']

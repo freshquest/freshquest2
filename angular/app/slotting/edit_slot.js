@@ -6,13 +6,21 @@ angular.module('freshquest2')
         '<div class="edit-slot" ng-click="enableEditor()">' +
             '<div class="stall_number">{{ slot.stall_number }}</div>' +
             '<div ng-hide="isEditing">' +
-                '{{ slot.assignment.vendor.name }} ' +
+                '{{ slot.assignment.vendor.name }}' +
             '</div>' +
-            '<div class="text-box entry_edit" ng-show="isEditing">' +
+            '<div class="text-box" ng-show="isEditing">' +
                 '<input ng-model="editableValue" auto-complete ui-items="vendorNames">' +
-                '<a ng-click="save()"><span class="fa fa-save"></span> </a>' +
-                ' or ' +
-                '<a ng-click="delete()"><span class="fa fa-ban"></span> </a>.' +
+                '<div class="entry_edit">'+
+                    '<a ng-click="save()"><span class="fa fa-save"></span> </a>' +
+                    ' or ' +
+                    '<a ng-click="delete()"><span class="fa fa-ban"></span> </a>' +
+                '</div>' +
+            '</div>' +
+            '<div ng-show="slot.assignment && !isEditing && !slot.assignment.is_checked_in" class="entry_edit"> ' +
+                '<a ng-click="set_checked_in(true)"><span class="fa fa-check"></span> </a> ' +
+            '</div>' +
+            '<div ng-show="slot.assignment && !isEditing && slot.assignment.is_checked_in" class="entry_edit"> ' +
+                '<a ng-click="set_checked_in(false)"><span class="fa fa-check"></span> </a> ' +
             '</div>' +
         '</div>';
 
@@ -93,6 +101,25 @@ angular.module('freshquest2')
                     $scope.delete();
                 }
             };
+
+            $scope.set_checked_in = function (new_value) {
+                var assignment = $scope.slot.assignment;
+                if (! assignment) return;
+                assignment.is_checked_in = new_value;
+                var vendor = assignment.vendor;
+                assignment.$partial_update(function (success) {
+                    // Replace this after the update
+                    assignment.vendor = vendor;
+                }, function (error) {
+                    console.log("Error updating:")
+                    console.log(error);
+                });
+                noReEnableHack = true;
+                $timeout(function () {
+                    noReEnableHack = false;
+                }, 0);
+            };
+
         },
 
     };

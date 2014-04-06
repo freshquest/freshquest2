@@ -42,6 +42,7 @@ class StallViewSet(mixins.ListModelMixin,
 class AssignmentViewSet(mixins.RetrieveModelMixin,
                     mixins.ListModelMixin,
                     mixins.CreateModelMixin,
+                    mixins.UpdateModelMixin,
                     mixins.DestroyModelMixin,
                     viewsets.GenericViewSet):
     lookup_field = 'assignment_id'

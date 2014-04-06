@@ -16,7 +16,12 @@ angular.module('freshquest2')
 })
 
 .factory('Assignment', function ($resource) {
-    return $resource('/api/assignment/:assignment_id', { assignment_id: '@assignment_id' });
+    return $resource('/api/assignment/:assignment_id',
+    	{ assignment_id: '@assignment_id' },
+    	{
+    		partial_update: { method: 'PATCH' },
+    	}
+    );
 })
 
 ;
