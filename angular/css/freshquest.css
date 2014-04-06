@@ -18,6 +18,13 @@ h1 {
   font-size: 50px;
   color: #3c6;
 }
+.header { 
+background: #3c6;
+}
+.logo {
+  width: 200px;
+  padding: 10px;
+}
 .v-hack {
   letter-spacing: -4px;
 }
