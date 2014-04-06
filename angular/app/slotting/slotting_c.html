@@ -19,11 +19,15 @@
 
         <div class="top group">
 	        <div class="slots right">
-	        	<div ng-repeat="slot in slots_right_top"> {{ slot.stall_number }} </div>  
+	        	<div class="slot" ng-repeat="slot in slots_right_top">
+                    {{ slot.stall_number }}
+                </div>  
 	        </div> <!-- end .top-right -->
 
 	        <div class="slots left">
-	        	<div ng-repeat="slot in slots_left_top"> {{ slot.stall_number }} </div>  
+	        	<div class="slot" ng-repeat="slot in slots_left_top">
+                    {{ slot.stall_number }}
+                </div>  
 	        </div><!-- end .top-left -->
 
 	       
@@ -33,12 +37,14 @@
 
     	<div class="bottom group">
     		<div class="slots right">
-	        	<div ng-repeat="slot in slots_right_bottom"> {{ slot.stall_number }} </div>  
+	        	<div class="slot" ng-repeat="slot in slots_right_bottom">
+                    {{ slot.stall_number }}
+                </div>  
 	        </div> <!-- end .bottom-right -->
 
 	        <div class="slots left">
-	        	<div ng-repeat="slot in slots_left_bottom" ng-class=" { leased: slot.assignment }"> 
-	        		{{ slot.stall_number }} {{ slot.assignment.vendor.name }} </div>  
+	        	<div class="slot" ng-repeat="slot in slots_left_bottom" ng-class=" { leased: slot.assignment }" edit-slot="slot">
+                </div>  
 	        </div> <!-- end .bottom-left -->
 
 	    </div><!-- end .bottom -->

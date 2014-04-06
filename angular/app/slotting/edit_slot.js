@@ -1,15 +1,15 @@
 angular.module('freshquest2')
 
-.directive('clickToEdit', function() {
+.directive('editSlot', function ($timeout) {
     var template =
-        '<div class="click-to-edit">' +
-            '<div ng-click="enableEditor()" ' +
-                'ng-hide="view.editorEnabled">' +
-                '{{value}} ' +
+        '<div class="edit-slot" ng-click="enableEditor()">' +
+            '{{ slot.stall_number }}' +
+            '<div ng-hide="isEditing">' +
+                '{{ slot.assignment.vendor.name }} ' +
             '</div>' +
-            '<div ng-show="view.editorEnabled">' +
-                '<input ng-model="view.editableValue">' +
-                '<a href="#" ng-click="save()">Save</a>' +
+            '<div ng-show="isEditing">' +
+                '<input ng-model="editableValue">' +
+                '<a ng-click="save()">Save</a>' +
                 ' or ' +
                 '<a ng-click="disableEditor()">cancel</a>.' +
             '</div>' +
@@ -24,27 +24,32 @@ angular.module('freshquest2')
         template: template,
 
         scope: {
-            value: "=clickToEdit",
+            slot: "=editSlot",
         },
 
-        controller: function($scope) {
-            $scope.view = {
-                editableValue: $scope.value,
-                editorEnabled: false
-            };
+        controller: function ($scope) {
+            var noReEnableHack = false;
+
+            $scope.isEditing = false;
+            $scope.editableValue = $scope.slot.assignment ? $scope.slot.assignment.vendor.name : '';
 
             $scope.enableEditor = function() {
-                $scope.view.editorEnabled = true;
-                $scope.view.editableValue = $scope.value;
+                if ($scope.editorEnabled || noReEnableHack) return;
+                $scope.isEditing = true;
+                $scope.editableValue = $scope.slot.assignment ? $scope.slot.assignment.vendor.name : '';
             };
 
             $scope.disableEditor = function() {
-                $scope.view.editorEnabled = false;
+                $scope.isEditing = false;
+                noReEnableHack = true;
+                $timeout(function () {
+                    noReEnableHack = false;
+                }, 0);
             };
 
             $scope.save = function() {
                 console.log("Saving with value: ");
-                console.log($scope.view.editableValue);
+                console.log($scope.editableValue);
                 // $scope.value = $scope.view.editableValue;
                 $scope.disableEditor();
             };

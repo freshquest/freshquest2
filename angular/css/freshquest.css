@@ -1,3 +1,9 @@
+/* Font Awesome Icons
+---------------------------------------- */
+/*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
+@import url(http://varietystudios.net/resources/font-awesome-4.0.3/css/font-awesome.min.css);
+
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -5,6 +11,12 @@
 
 h4 {
   margin-top: 25px;
+}
+h1 {
+  font-family:Raleway,Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 50px;
+  color: #3c6;
 }
 .row {
   margin-bottom: 20px;
@@ -32,11 +44,27 @@ hr {
   width: 100%;
   background: #cccccc;
 }
-.slots , .available {
-  background: #3c6;
-  border: thick #ccc;
+
+.slots {
+  padding: 5px;
 }
-.top
+.slot , .available {
+  background: #3c6;
+  border:2px solid #ccc;
+  padding: 5px;
+  z-index: 1;
+}
+.edit-slot a
+{z-index: 2!important;}
+.leased {
+  background: #666!important;
+  color: #e3e3e3;
+}
+.occupied {
+  background: #000!important;
+  color: #e3e3e3;
+}
+.top {;}
 
 .left {
   width: 45%;
@@ -63,9 +91,7 @@ hr {
   padding: 20px;
   width: 100%;
 }
-.leased {
-  background: #666;
-}
-.occupied {
-  background: #000;
+.slot_availability {
+  text-align: right;
+  margin-top: 10px;
 }
