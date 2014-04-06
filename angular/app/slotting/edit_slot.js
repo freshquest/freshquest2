@@ -1,6 +1,6 @@
 angular.module('freshquest2')
 
-.directive('editSlot', function ($timeout, Vendor) {
+.directive('editSlot', function ($timeout, Vendor, Assignment, MarketDay) {
 
     var template =
         '<div class="edit-slot" ng-click="enableEditor()">' +
@@ -8,11 +8,11 @@ angular.module('freshquest2')
             '<div ng-hide="isEditing">' +
                 '{{ slot.assignment.vendor.name }} ' +
             '</div>' +
-            '<div class="text-box" ng-show="isEditing">' +
+            '<div class="text-box entry_edit" ng-show="isEditing">' +
                 '<input ng-model="editableValue" auto-complete ui-items="vendorNames">' +
-                '<a ng-click="save()">Save</a>' +
+                '<a ng-click="save()"><span class="fa fa-save"></span> </a>' +
                 ' or ' +
-                '<a ng-click="disableEditor()">cancel</a>.' +
+                '<a ng-click="delete()"><span class="fa fa-ban"></span> </a>.' +
             '</div>' +
         '</div>';
 
@@ -55,19 +55,43 @@ angular.module('freshquest2')
                 }, 0);
             };
 
+            $scope.delete = function () {
+                if ($scope.slot.assignment) {
+                    $scope.slot.assignment.$delete(function (success) {
+                        $scope.slot.assignment = null;
+                        $scope.disableEditor();
+                    }, function (error) {
+                        console.log("Error deleting:")
+                        console.log(error);
+                    });
+                }
+            }
+
             $scope.save = function () {
                 var new_value = $scope.editableValue.trim();
-                if (new_value.length)
-                    if ($scope.slot.assignment) {
-                        $scope.slot.assignment.$delete();
-                        $scope.slot.assignment = null;
+                if (new_value.length) {
+                    if ($scope.slot.assignment && $scope.slot.assignment.vendor.name === new_value) {
+                        $scope.disableEditor();
+                        return;
                     }
-                else {
-
-                    console.log("Saving with value: ");
-                    console.log($scope.editableValue);
+                    var vendor = _($scope.vendors).findWhere({name: new_value});
+                    if (vendor) {
+                        var assignment = new Assignment();
+                        assignment.market_day_id = MarketDay.current.market_day_id;
+                        assignment.stall_id = $scope.slot.stall_id;
+                        assignment.vendor_id = vendor.vendor_id;
+                        assignment.$save(function (success) {
+                            $scope.slot.assignment = assignment;
+                            assignment.vendor = vendor;
+                            $scope.disableEditor();
+                        }, function (error) {
+                            console.log("Error updating:")
+                            console.log(error);
+                        });
+                    }
+                } else {
+                    $scope.delete();
                 }
-                $scope.disableEditor();
             };
         },
 

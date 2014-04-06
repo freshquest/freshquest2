@@ -59,15 +59,24 @@ hr {
 }
 .edit-slot a
 {z-index: 2!important;}
-.entry-edit {
+.entry_edit {
   float: right;
 }
-.entry-edit a 
-{color: #fff;}
-.entry-edit .fa-ban a:hover 
-{color: #f00;}
-.entry-edit .fa-save a:hover 
-{color: #3c6;}
+.entry_edit a  {
+  color: #fff;
+  display: inline-block;
+}
+.entry_edit a .fa {
+  padding: 5px;
+  border-radius: 2px;
+
+}
+.entry_edit a .fa-ban:hover 
+{background-color: #ff0000;
+}
+.entry_edit a .fa-save:hover 
+{background-color: #006633;
+}
 .save
 .cancel {}
 .stall_number {
